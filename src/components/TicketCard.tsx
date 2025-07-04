@@ -1,7 +1,9 @@
+'use client';
+
 import React from 'react';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { Ticket } from '../types';
+import { Ticket } from '@/types/ticket';
 
 interface TicketCardProps {
   ticket: Ticket;

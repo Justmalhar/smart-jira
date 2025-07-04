@@ -85,7 +85,12 @@ export async function POST(request: NextRequest) {
       }
     });
 
-    const generatedTickets = JSON.parse(response.choices[0].message.content);
+    const content = response.choices[0].message.content;
+    if (!content) {
+      return NextResponse.json({ error: 'No content received from OpenAI' }, { status: 500 });
+    }
+    
+    const generatedTickets = JSON.parse(content);
     
     // Add metadata to each ticket
     const ticketsWithMetadata = generatedTickets.tickets.map((ticket: any) => ({
